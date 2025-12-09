@@ -71,17 +71,17 @@ const Assistant: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-teal hover:bg-teal-dark text-white rounded-full p-4 shadow-2xl z-50 transition-all duration-300 hover:scale-110 flex items-center"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-teal hover:bg-teal-dark text-white rounded-full p-3 sm:p-4 shadow-2xl z-50 transition-all duration-300 hover:scale-110 flex items-center"
           aria-label="Open support chat"
         >
-          <MessageCircle className="w-6 h-6 mr-2" />
+          <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" />
           <span className="font-semibold hidden sm:inline">Questions?</span>
         </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-full max-w-sm sm:w-96 bg-white rounded-2xl shadow-2xl z-50 border border-gray-200 overflow-hidden flex flex-col h-[500px]">
+        <div className="fixed inset-x-0 bottom-0 sm:inset-auto sm:bottom-6 sm:right-6 w-full sm:w-96 bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl z-50 border border-gray-200 overflow-hidden flex flex-col h-[70vh] sm:h-[500px] max-h-[600px] animate-slide-up sm:animate-fade-in">
           {/* Header */}
           <div className="bg-teal p-4 flex justify-between items-center text-white">
             <div className="flex items-center">

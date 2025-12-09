@@ -25,28 +25,36 @@ const About: React.FC = () => {
             </div>
 
             {/* Right Content Column */}
-            <div className="lg:col-span-10 flex flex-col gap-20">
+            <div className="lg:col-span-10 flex flex-col gap-10 sm:gap-20">
                 {/* Headline */}
-                <h2 className="text-3xl md:text-[2.75rem] leading-[1.2] font-medium text-gray-900 tracking-tight">
-                    We offer the largest and most advanced medical center        <span className="inline-flex items-center align-middle mx-3 bg-cream px-3 py-1.5 rounded-full gap-3 transform -translate-y-1">
+                <h2 className="text-2xl sm:text-3xl md:text-[2.75rem] leading-[1.3] sm:leading-[1.2] font-medium text-gray-900 tracking-tight">
+                    We offer the largest and most advanced medical center
+                    <span className="hidden sm:inline-flex items-center align-middle mx-3 bg-cream px-3 py-1.5 rounded-full gap-3 transform -translate-y-1">
                         <Activity className="w-5 h-5 text-teal" />
                         <Heart className="w-5 h-5 text-teal" />
                         <Brain className="w-5 h-5 text-teal" />
                         <Stethoscope className="w-5 h-5 text-teal" />
-                    </span>  in a 100-mile radius, with the resources to offer comprehensive and advanced medical care.
+                    </span>
+                    <span className="sm:hidden inline-flex items-center justify-center my-4 bg-cream px-3 py-1.5 rounded-full gap-3 w-max">
+                        <Activity className="w-4 h-4 text-teal" />
+                        <Heart className="w-4 h-4 text-teal" />
+                        <Brain className="w-4 h-4 text-teal" />
+                        <Stethoscope className="w-4 h-4 text-teal" />
+                    </span>
+                    in a 100-mile radius, with the resources to offer comprehensive and advanced medical care.
               
                     At the same time, we are in tune with the specific health needs of our region.
                 </h2>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-y-8 sm:gap-y-16 gap-x-4 sm:gap-x-8">
                     {stats.map((stat, index) => (
-                        <div key={index} className="flex flex-col gap-3 group cursor-default">
-                            <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-teal transition-colors mb-1" />
-                            <span className="text-5xl font-medium text-gray-900 tracking-tight">
+                        <div key={index} className="flex flex-col gap-2 sm:gap-3 group cursor-default">
+                            <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-teal transition-colors mb-1" />
+                            <span className="text-3xl sm:text-5xl font-medium text-gray-900 tracking-tight">
                                 {stat.value}
                             </span>
-                            <span className="text-gray-500 text-lg font-normal">
+                            <span className="text-gray-500 text-sm sm:text-lg font-normal">
                                 {stat.label}
                             </span>
                         </div>

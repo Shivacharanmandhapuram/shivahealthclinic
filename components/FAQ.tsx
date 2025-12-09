@@ -52,18 +52,18 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-[900px] mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-white">
+      <div className="max-w-[900px] mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-gray-100 text-sm font-medium text-gray-600 bg-gray-50 mb-6 shadow-sm">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-gray-100 text-sm font-medium text-gray-600 bg-gray-50 mb-4 sm:mb-6 shadow-sm">
             FAQ
           </span>
-          <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tight leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight leading-[1.15] mb-4 sm:mb-6">
             Answers to your questions
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl font-normal">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl font-normal">
             Get quick, clear information about our services, appointments, support, and more
           </p>
         </div>
@@ -77,22 +77,22 @@ const FAQ: React.FC = () => {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between py-6 text-left focus:outline-none group"
+                className="w-full flex items-center justify-between py-4 sm:py-6 text-left focus:outline-none group"
               >
-                <span className={`text-xl font-medium transition-colors duration-200 ${openIndex === index ? 'text-teal' : 'text-gray-900 group-hover:text-teal'}`}>
+                <span className={`text-base sm:text-xl font-medium transition-colors duration-200 pr-2 ${openIndex === index ? 'text-teal' : 'text-gray-900 group-hover:text-teal'}`}>
                   {item.question}
                 </span>
-                <span className={`flex-shrink-0 ml-6 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-teal text-white rotate-180' : 'bg-teal/10 text-teal'}`}>
-                  <ChevronDown className="w-5 h-5" />
+                <span className={`flex-shrink-0 ml-3 sm:ml-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-teal text-white rotate-180' : 'bg-teal/10 text-teal'}`}>
+                  <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
                 </span>
               </button>
               
               <div 
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0'
+                  openIndex === index ? 'max-h-96 opacity-100 mb-4 sm:mb-6' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-gray-500 leading-relaxed text-lg pr-12">
+                <p className="text-gray-500 leading-relaxed text-sm sm:text-lg pr-4 sm:pr-12">
                   {item.answer}
                 </p>
               </div>
