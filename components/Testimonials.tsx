@@ -42,40 +42,40 @@ const reviews = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="bg-cream py-16 sm:py-24 relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+    <section className="bg-cream py-24 relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium text-gray-600 bg-white shadow-sm mb-4 sm:mb-6">
+        <div className="flex flex-col items-center text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-sm font-medium text-gray-600 bg-white shadow-sm mb-6">
             Testimonials
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight leading-[1.15] max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tight leading-[1.15] max-w-3xl">
             What our patients say about their care experience
           </h2>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-500 max-w-2xl font-normal">
+          <p className="mt-6 text-lg text-gray-500 max-w-2xl font-normal">
             Real stories and honest reviews from those we've had the privilege to serve.
           </p>
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {reviews.map((review, index) => (
             <div 
               key={index} 
-              className="bg-white p-5 sm:p-8 rounded-[16px] sm:rounded-[24px] shadow-[0_2px_20px_rgba(0,0,0,0.02)] border border-gray-50 flex flex-col h-full transition-transform hover:-translate-y-1 duration-300"
+              className="bg-white p-8 rounded-[24px] shadow-[0_2px_20px_rgba(0,0,0,0.02)] border border-gray-50 flex flex-col h-full transition-transform hover:-translate-y-1 duration-300"
             >
               {/* Stars */}
-              <div className="flex gap-1 mb-4 sm:mb-6 text-[#FF9E0B]">
+              <div className="flex gap-1 mb-6 text-[#FF9E0B]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+                  <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
 
               {/* Text */}
-              <div className="mb-6 sm:mb-8 flex-grow relative">
-                <Quote className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 text-teal/10 -z-10 transform -scale-x-100" />
-                <p className="text-gray-600 leading-relaxed font-medium text-sm sm:text-base">
+              <div className="mb-8 flex-grow relative">
+                <Quote className="absolute -top-2 -left-2 w-8 h-8 text-teal/10 -z-10 transform -scale-x-100" />
+                <p className="text-gray-600 leading-relaxed font-medium">
                   "{review.text}"
                 </p>
               </div>
@@ -100,10 +100,10 @@ const Testimonials: React.FC = () => {
                 href="https://www.zocdoc.com/practice/blessings-medical-clinic-113826" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-[#fef08a] hover:bg-[#fde047] text-yellow-900 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2 group text-sm sm:text-base"
+                className="bg-[#fef08a] hover:bg-[#fde047] text-yellow-900 font-bold py-4 px-8 rounded-full transition-all shadow-md hover:shadow-lg flex items-center gap-2 group"
             >
                 Read more reviews on Zocdoc
-                <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
         </div>
 

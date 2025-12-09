@@ -7,12 +7,12 @@ interface MeetDoctorProps {
 
 const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
   return (
-    <section className="bg-cream py-16 sm:py-24 relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+    <section className="bg-cream py-24 relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Column: Image (Alternating layout from Hero) */}
         <div className="order-2 lg:order-1 relative">
-            <div className="relative rounded-[24px] sm:rounded-[40px] overflow-hidden shadow-2xl bg-teal-light aspect-[4/5] max-w-sm sm:max-w-md mx-auto lg:mx-0">
+            <div className="relative rounded-[40px] overflow-hidden shadow-2xl bg-teal-light aspect-[4/5] max-w-md mx-auto lg:mx-0">
                 <img 
                 src="/dr.webp"
                 onError={(e) => {
@@ -34,10 +34,10 @@ const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
                 <span className="text-sm font-semibold text-gray-700">Medical Director</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-semibold text-gray-900 tracking-tight leading-tight mb-3 sm:mb-4">
+            <h2 className="text-4xl md:text-5xl font-sans font-semibold text-gray-900 tracking-tight leading-tight mb-4">
                 Dr. Nikhil Gohokar, MD
             </h2>
-            <p className="text-xl sm:text-2xl text-teal font-serif italic mb-4 sm:mb-6">
+            <p className="text-2xl text-teal font-serif italic mb-6">
                 Primary Care Doctor
             </p>
 
@@ -46,16 +46,16 @@ const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
                 <span>415 Elsbree St, Ste 201, Fall River, MA</span>
             </div>
 
-            <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-10 leading-relaxed max-w-lg">
+            <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-lg">
                 Dedicated to providing compassionate, comprehensive care for patients of all ages. Dr. Gohokar focuses on preventative medicine and long-term wellness strategies.
             </p>
 
             <button 
                 onClick={onKnowMore}
-                className="group bg-teal hover:bg-teal-dark text-white rounded-full px-6 sm:px-8 py-3 sm:py-4 font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-2 sm:gap-3 text-sm sm:text-base"
+                className="group bg-teal hover:bg-teal-dark text-white rounded-full px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-3"
             >
                 Know More 
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
         </div>
 

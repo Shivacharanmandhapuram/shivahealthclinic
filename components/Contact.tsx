@@ -8,22 +8,22 @@ const Contact: React.FC = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         
         {/* CTA Banner */}
-        <div className="relative bg-[#006d77] rounded-[24px] sm:rounded-[40px] px-6 py-12 sm:px-8 sm:py-20 md:p-24 text-center overflow-hidden shadow-2xl mb-10 sm:mb-20">
+        <div className="relative bg-[#006d77] rounded-[40px] px-8 py-20 md:p-24 text-center overflow-hidden shadow-2xl mb-20">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10" 
                  style={{ backgroundImage: 'radial-gradient(circle, #fff 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}>
             </div>
             
             <div className="relative z-10 max-w-3xl mx-auto">
-                <h2 className="text-2xl sm:text-4xl md:text-6xl font-sans font-medium text-white tracking-tight leading-[1.15] mb-4 sm:mb-8">
+                <h2 className="text-4xl md:text-6xl font-sans font-medium text-white tracking-tight leading-[1.1] mb-8">
                     Your wellness journey begins in one click
                 </h2>
-                <p className="text-teal-100 text-base sm:text-xl md:text-2xl mb-8 sm:mb-12 font-light leading-relaxed max-w-2xl mx-auto">
+                <p className="text-teal-100 text-xl md:text-2xl mb-12 font-light leading-relaxed max-w-2xl mx-auto">
                     Book your appointment today and experience expert care designed around you to be better
                 </p>
                 <div className="flex justify-center">
-                    <button className="bg-white text-[#006d77] hover:bg-gray-100 font-bold text-sm sm:text-lg py-3 px-6 sm:py-4 sm:px-10 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-2">
-                        Contact us <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <button className="bg-white text-[#006d77] hover:bg-gray-100 font-bold text-lg py-4 px-10 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-2">
+                        Contact us <ArrowRight className="w-5 h-5" />
                     </button>
                 </div>
             </div>
