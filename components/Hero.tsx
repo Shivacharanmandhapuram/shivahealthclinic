@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
 
                      {/* Doctor Name Card Overlay */}
                      <div className="absolute bottom-10 left-10 text-white z-10">
-                        <p className="text-lg font-medium opacity-90 mb-1 text-teal-100">Primary Care</p>
+                        <p className="text-lg font-medium opacity-90 mb-1 text-teal-100">Board-Certified Family Physician</p>
                         <h3 className="text-4xl font-semibold tracking-wide">Dr. Nikhil Gohokar</h3>
                      </div>
 

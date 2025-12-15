@@ -35,7 +35,7 @@ const MeetDoctor: React.FC = () => {
                 Dr. Nikhil Gohokar, MD
             </h2>
             <p className="text-2xl text-teal font-serif italic mb-6">
-                Primary Care Doctor
+                Board-Certified Family Physician
             </p>
 
             <div className="flex items-start gap-3 text-gray-500 mb-8 font-medium max-w-sm">
