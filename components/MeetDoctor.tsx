@@ -51,7 +51,7 @@ const MeetDoctor: React.FC = () => {
                 to="/aboutdr.nikhil"
                 className="group bg-teal hover:bg-teal-dark text-white rounded-full px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-3"
             >
-                Know More 
+                Know more about Dr. Gohokar's extensive work
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
         </div>
