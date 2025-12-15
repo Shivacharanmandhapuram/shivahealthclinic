@@ -87,7 +87,7 @@ const Hero: React.FC = () => {
                             e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop"; 
                         }}
                         alt="Dr. Nikhil Gohokar" 
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-[center_25%]"
                      />
                      
                      {/* Gradient Overlay for text readability */}
