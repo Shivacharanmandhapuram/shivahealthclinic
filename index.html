@@ -45,7 +45,54 @@
         scroll-behavior: smooth;
       }
       body {
-        background-color: #edf6f9; /* Cream background */
+        background-color: #edf6f9;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Performance: Use GPU acceleration for animations */
+      .gpu-accelerated {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+      }
+      
+      /* Scroll-triggered fade-in animation */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Respect reduced motion preference */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .fade-in-section {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      
+      /* Smooth image loading */
+      img {
+        transition: opacity 0.3s ease-in-out;
+      }
+      img[loading="lazy"] {
+        opacity: 0;
+      }
+      img.loaded, img:not([loading="lazy"]) {
+        opacity: 1;
       }
     </style>
   <script type="importmap">

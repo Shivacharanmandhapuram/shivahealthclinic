@@ -23,6 +23,17 @@ const Navbar: React.FC = () => {
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => {
+                    if (item.href.startsWith('#')) {
+                      e.preventDefault();
+                      const target = document.querySelector(item.href);
+                      if (target) {
+                        const navHeight = 96;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                      }
+                    }
+                  }}
                   className="text-gray-600 hover:text-teal font-medium text-base transition-colors duration-200"
                 >
                   {item.label}
@@ -63,7 +74,18 @@ const Navbar: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      const navHeight = 96;
+                      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                  }
+                }}
                 className="text-gray-800 block px-3 py-3 rounded-md text-base font-medium hover:bg-cream"
               >
                 {item.label}

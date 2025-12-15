@@ -12,6 +12,8 @@ const MeetDoctor: React.FC = () => {
             <div className="relative rounded-[40px] overflow-hidden shadow-2xl bg-teal-light aspect-[4/5] max-w-md mx-auto lg:mx-0">
                 <img 
                 src="/2nd.png"
+                loading="lazy"
+                onLoad={(e) => e.currentTarget.classList.add('loaded')}
                 onError={(e) => {
                     e.currentTarget.src = "/dr.webp";
                 }}

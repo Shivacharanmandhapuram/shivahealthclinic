@@ -11,19 +11,34 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Assistant from './components/Assistant';
 import DoctorProfile from './components/DoctorProfile';
+import AnimatedSection from './components/AnimatedSection';
 
 const HomePage: React.FC = () => {
   return (
     <div className="font-sans antialiased text-gray-900 bg-cream min-h-screen">
       <Navbar />
       <Hero />
-      <About />
-      <MeetDoctor />
-      <Services />
-      <Insurance />
-      <Testimonials />
-      <FAQ />
-      <Contact />
+      <AnimatedSection>
+        <About />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <MeetDoctor />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <Services />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <Insurance />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <Testimonials />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <FAQ />
+      </AnimatedSection>
+      <AnimatedSection delay={100}>
+        <Contact />
+      </AnimatedSection>
       <Assistant />
     </div>
   );
