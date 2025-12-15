@@ -1,164 +1,105 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
-import { sendMessageToGemini } from '../services/geminiService';
-import { ChatMessage } from '../types';
+import React, { useState, useEffect } from 'react';
+import { Phone, X } from 'lucide-react';
 
 const Assistant: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      role: 'model',
-      text: 'Hello! I am the Blessings Clinic virtual assistant. How can I help you today?',
-      timestamp: new Date()
-    }
-  ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [showNudge, setShowNudge] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+  // Trigger the "Soft Nudge" after 4 seconds (reduced from 7s for better visibility/testing)
   useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-    }
-  }, [messages, isOpen]);
+    const timer = setTimeout(() => {
+      if (!hasInteracted) {
+        setShowNudge(true);
+      }
+    }, 4000);
 
-  const handleSend = async (e?: React.FormEvent) => {
-    e?.preventDefault();
-    if (!input.trim() || isLoading) return;
+    return () => clearTimeout(timer);
+  }, [hasInteracted]);
 
-    const userMsg: ChatMessage = {
-      id: Date.now().toString(),
-      role: 'user',
-      text: input,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMsg]);
-    setInput('');
-    setIsLoading(true);
-
-    try {
-      const responseText = await sendMessageToGemini(input);
-      const botMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        role: 'model',
-        text: responseText,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botMsg]);
-    } catch (error) {
-       console.error(error);
-       const errorMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        role: 'model',
-        text: "I apologize, but I'm having trouble connecting right now. Please call the clinic.",
-        timestamp: new Date()
-       };
-       setMessages(prev => [...prev, errorMsg]);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleInteraction = () => {
+    setHasInteracted(true);
+    setShowNudge(false);
   };
 
   return (
-    <>
-      {/* Floating Button */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-teal hover:bg-teal-dark text-white rounded-full p-4 shadow-2xl z-50 transition-all duration-300 hover:scale-110 flex items-center"
-          aria-label="Open support chat"
-        >
-          <MessageCircle className="w-6 h-6 mr-2" />
-          <span className="font-semibold hidden sm:inline">Questions?</span>
-        </button>
-      )}
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-6 w-full max-w-sm sm:w-96 bg-white rounded-2xl shadow-2xl z-50 border border-gray-200 overflow-hidden flex flex-col h-[500px]">
-          {/* Header */}
-          <div className="bg-teal p-4 flex justify-between items-center text-white">
-            <div className="flex items-center">
-              <Bot className="w-6 h-6 mr-2" />
-              <div>
-                <h3 className="font-bold text-sm">Blessings Assistant</h3>
-                <span className="text-xs text-teal-200 flex items-center">
-                  <span className="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
-                  Online
-                </span>
-              </div>
-            </div>
-            <button 
-              onClick={() => setIsOpen(false)}
-              className="text-white hover:bg-teal-dark rounded-full p-1"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm shadow-sm ${
-                    msg.role === 'user'
-                      ? 'bg-teal text-white rounded-br-none'
-                      : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
-                  }`}
-                >
-                  {msg.text}
-                </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white text-gray-800 border border-gray-200 rounded-2xl rounded-bl-none px-4 py-2 text-sm shadow-sm flex items-center">
-                  <span className="animate-bounce mr-1">.</span>
-                  <span className="animate-bounce mr-1 delay-75">.</span>
-                  <span className="animate-bounce delay-150">.</span>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Area */}
-          <form onSubmit={handleSend} className="p-3 bg-white border-t border-gray-100 flex items-center">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about hours, services..."
-              className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal focus:bg-white transition-all"
-            />
-            <button
-              type="submit"
-              disabled={isLoading || !input.trim()}
-              className={`ml-2 p-2 rounded-full ${
-                !input.trim() || isLoading 
-                  ? 'bg-gray-200 text-gray-400' 
-                  : 'bg-teal text-white hover:bg-teal-dark'
-              } transition-colors`}
-            >
-              <Send className="w-5 h-5" />
-            </button>
-          </form>
-          <div className="bg-gray-50 px-4 py-1 text-center">
-             <p className="text-[10px] text-gray-400">AI can make mistakes. For medical emergencies, call 911.</p>
-          </div>
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
+      
+      {/* Soft Nudge Card (Pop-up) */}
+      <div 
+        className={`pointer-events-auto mb-4 mr-2 max-w-[280px] bg-white rounded-2xl shadow-2xl border border-teal/10 p-4 transition-all duration-700 transform origin-bottom-right relative ${
+          showNudge ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-90 pointer-events-none'
+        }`}
+      >
+        <div className="flex justify-between items-start mb-2">
+           <div className="flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </span>
+              <span className="text-xs font-bold text-teal uppercase tracking-wider">Accepting New Patients</span>
+           </div>
+           <button 
+             onClick={(e) => {
+               e.stopPropagation(); 
+               handleInteraction();
+             }}
+             className="text-gray-400 hover:text-gray-600 transition-colors p-1"
+             aria-label="Close"
+           >
+             <X className="w-4 h-4" />
+           </button>
         </div>
-      )}
-    </>
+        
+        <p className="text-gray-800 text-sm font-medium leading-relaxed mb-3">
+          Skip the wait! We have appointment slots available this week.
+        </p>
+
+        <a 
+          href="tel:6172515065"
+          onClick={handleInteraction}
+          className="block w-full text-center bg-teal hover:bg-teal-dark text-white text-xs font-bold py-2.5 rounded-lg transition-colors shadow-sm"
+        >
+          Call to Schedule
+        </a>
+        
+        {/* Triangle Pointer */}
+        <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45 border-r border-b border-teal/10 shadow-sm"></div>
+      </div>
+
+      {/* Main Floating Action Button */}
+      <div 
+        className="pointer-events-auto relative group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Radiating Ripple Animation */}
+        <span className="absolute -inset-2 rounded-full bg-teal opacity-20 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></span>
+        <span className="absolute -inset-4 rounded-full bg-teal opacity-10 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite] delay-150"></span>
+
+        <a
+          href="tel:6172515065"
+          onClick={handleInteraction}
+          className="relative flex items-center justify-center bg-teal hover:bg-teal-dark text-white rounded-full w-16 h-16 shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group z-10"
+          aria-label="Call to book appointment"
+        >
+          <Phone className={`w-7 h-7 transition-transform duration-300 ${isHovered ? 'rotate-12' : ''}`} fill="currentColor" />
+          
+          {/* Badge */}
+          <span className="absolute -top-1 -right-1 flex h-5 w-5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-5 w-5 bg-red-500 border-2 border-white"></span>
+          </span>
+        </a>
+
+        {/* Hover Label */}
+        <div className="absolute right-full top-1/2 -translate-y-1/2 mr-6 bg-gray-900 text-white text-sm font-bold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
+          Call Now
+          <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+        </div>
+      </div>
+
+    </div>
   );
 };
 
