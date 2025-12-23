@@ -6,7 +6,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Insurance', href: '#insurance' },
-  { label: 'About Dr. Nikhil', href: '#doctor-profile' },
   { label: 'Contact', href: '#contact' },
 ];
 

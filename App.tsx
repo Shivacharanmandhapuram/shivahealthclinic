@@ -10,7 +10,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Assistant from './components/Assistant';
-import DoctorProfileSection from './components/DoctorProfileSection';
+import DoctorProfile from './components/DoctorProfile';
 import AnimatedSection from './components/AnimatedSection';
 
 const HomePage: React.FC = () => {
@@ -23,9 +23,6 @@ const HomePage: React.FC = () => {
       </AnimatedSection>
       <AnimatedSection delay={100}>
         <MeetDoctor />
-      </AnimatedSection>
-      <AnimatedSection delay={100}>
-        <DoctorProfileSection />
       </AnimatedSection>
       <AnimatedSection delay={100}>
         <Services />
@@ -52,6 +49,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/aboutdr.nikhil" element={<DoctorProfile />} />
       </Routes>
     </BrowserRouter>
   );

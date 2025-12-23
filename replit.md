@@ -13,18 +13,17 @@ Preferred communication style: Simple, everyday language.
 ### Frontend Architecture
 - **Framework**: React 19 with TypeScript
 - **Build Tool**: Vite 6 for fast development and optimized production builds
-- **Routing**: React Router DOM v7 for routing (single route "/" for homepage). All navigation uses anchor links with smooth scrolling (no page transitions)
+- **Routing**: React Router DOM v7 for client-side navigation between home page and doctor profile page
 - **Styling**: Tailwind CSS loaded via CDN with custom theme configuration (teal, sage, cream, coral color palette)
 - **Icons**: Lucide React for consistent iconography throughout the application
-- **Smooth Scrolling**: HTML configured with `scroll-behavior: smooth;` for professional navigation experience
 
 ### Component Structure
-The application follows a true single-page application (SPA) pattern with all content on one page. Navigation uses anchor links for smooth scrolling instead of page routing:
-- `Navbar` - Sticky navigation with mobile hamburger menu and smooth scroll anchor links
+The application follows a single-page application pattern with section-based components:
+- `Navbar` - Sticky navigation with mobile hamburger menu
 - `Hero` - Main landing section with call-to-action
 - `About` - Clinic statistics and overview
-- `MeetDoctor` - Doctor introduction card with "Discover Dr Gohokar's Impact" button
-- `DoctorProfileSection` - Integrated doctor profile with carousel, USA initiatives, and India impact sections (id: `doctor-profile`)
+- `MeetDoctor` - Doctor introduction card
+- `DoctorProfile` - Dedicated full-page doctor biography (separate route)
 - `Services` - Medical services grid
 - `Insurance` - Accepted insurance plans display
 - `Testimonials` - Patient reviews carousel
@@ -45,26 +44,6 @@ The application follows a true single-page application (SPA) pattern with all co
 - TypeScript configured with ESNext modules, React JSX, and path aliases (`@/*`)
 - Vite handles environment variable injection for API keys (`GEMINI_API_KEY`)
 - Development server runs on port 5000 with open host access
-
-## Recent Changes (December 23, 2025)
-
-### Deployment Optimization
-- **Created vercel.json**: Added Vercel deployment configuration with:
-  - Rewrites: All non-file paths directed to `/index.html` for React Router SPA support
-  - Clean URLs: Enabled for paths like `/about` without `.html` extension
-  - Asset caching headers: Configured for optimized WebP, PNG, JPG, and other image formats
-
-### Site Structure Refactor
-- **Removed standalone page**: Eliminated `/aboutdr.nikhil` route and DoctorProfile page
-- **Integrated doctor profile**: Content moved from DoctorProfile.tsx to new DoctorProfileSection.tsx component
-- **SPA conversion**: Entire site now runs as single page with anchor link navigation
-- **Navigation update**: Added "About Dr. Nikhil" nav item linking to #doctor-profile anchor
-- **Button behavior**: "Discover Dr Gohokar's Impact" button now smoothly scrolls to doctor profile section instead of navigating to separate page
-- **Asset organization**: Moved all WebP files to public folder for consistent asset serving
-- **Benefits**: 
-  - Eliminates 404 errors on page refresh
-  - Faster user experience (no page loads, just smooth scrolling)
-  - Mobile-friendly with natural scroll interactions
 
 ## External Dependencies
 
