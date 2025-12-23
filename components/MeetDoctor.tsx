@@ -1,11 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, MapPin, Award, CheckCircle2, Languages, Milestone } from 'lucide-react';
 
-interface MeetDoctorProps {
-  onKnowMore: () => void;
-}
+const MeetDoctor: React.FC = () => {
+  const navigate = useNavigate();
 
-const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
   return (
     <section className="bg-white py-24 md:py-32 relative overflow-hidden" id="meet-doctor">
       {/* Decorative Background Elements */}
@@ -114,7 +113,7 @@ const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
             {/* Actions */}
             <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
               <button 
-                onClick={onKnowMore}
+                onClick={() => navigate('/aboutdr.nikhil')}
                 className="w-full sm:w-auto bg-teal hover:bg-teal-dark text-white rounded-full px-10 py-5 font-bold text-lg transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 group hover:-translate-y-1"
               >
                 Discover Global Impact
