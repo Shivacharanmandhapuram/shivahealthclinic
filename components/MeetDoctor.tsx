@@ -1,63 +1,139 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Award } from 'lucide-react';
+import { ArrowRight, MapPin, Award, CheckCircle2, Languages, Milestone } from 'lucide-react';
 
-const MeetDoctor: React.FC = () => {
+interface MeetDoctorProps {
+  onKnowMore: () => void;
+}
+
+const MeetDoctor: React.FC<MeetDoctorProps> = ({ onKnowMore }) => {
   return (
-    <section className="bg-cream py-24 relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        {/* Left Column: Image (Alternating layout from Hero) */}
-        <div className="order-2 lg:order-1 relative">
-            <div className="relative rounded-[40px] overflow-hidden shadow-2xl bg-teal-light aspect-[4/5] max-w-md mx-auto lg:mx-0">
+    <section className="bg-white py-24 md:py-32 relative overflow-hidden" id="meet-doctor">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-cream/50 -skew-x-12 translate-x-1/2 -z-0 hidden lg:block"></div>
+      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-teal/5 rounded-full blur-3xl -z-0"></div>
+
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+          {/* Left Column: Visual Composition (5/12 width) */}
+          <div className="lg:col-span-5 relative order-2 lg:order-1">
+            <div className="relative z-10">
+              {/* Main Image Container */}
+              <div className="relative rounded-[48px] overflow-hidden shadow-[0_20px_50px_rgba(0,109,119,0.15)] bg-teal-light group">
                 <img 
-                src="/2nd.png"
-                loading="lazy"
-                onLoad={(e) => e.currentTarget.classList.add('loaded')}
-                onError={(e) => {
-                    e.currentTarget.src = "/dr.webp";
-                }}
-                alt="Dr. Nikhil Gohokar" 
-                className="w-full h-full object-cover object-top"
+                  src="/dr.webp"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop";
+                  }}
+                  alt="Dr. Nikhil Gohokar" 
+                  className="w-full h-full object-cover aspect-[4/5] transform transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/60 via-transparent to-transparent"></div>
-            </div>
-            {/* Decorative background circle */}
-            <div className="absolute top-10 -left-10 w-full h-full border-2 border-sage rounded-[40px] -z-10 hidden lg:block"></div>
-        </div>
 
-        {/* Right Column: Content */}
-        <div className="order-1 lg:order-2 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 shadow-sm mb-6">
-                <Award className="w-4 h-4 text-teal" />
-                <span className="text-sm font-semibold text-gray-700">Medical Director</span>
-            </div>
+                {/* Subtle Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/40 via-transparent to-transparent opacity-60"></div>
 
-            <h2 className="text-4xl md:text-5xl font-sans font-semibold text-gray-900 tracking-tight leading-tight mb-4">
-                Dr. Nikhil Gohokar, MD
-            </h2>
-            <p className="text-2xl text-teal font-serif italic mb-6">
-                Board-Certified Family Physician
-            </p>
+                {/* Float-in Experience Badge */}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20 flex items-center gap-4 animate-fade-in">
+                  <div className="w-12 h-12 bg-teal rounded-xl flex items-center justify-center text-white shrink-0">
+                    <Milestone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Global Experience</p>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">13+ Years of Clinical Excellence</p>
+                  </div>
+                </div>
+              </div>
 
-            <div className="flex items-start gap-3 text-gray-500 mb-8 font-medium max-w-sm">
-                <MapPin className="w-5 h-5 text-coral shrink-0 mt-1" />
-                <span>415 Elsbree St, Ste 201, Fall River, MA</span>
+              {/* Decorative Frame */}
+              <div className="absolute -top-6 -left-6 w-full h-full border-2 border-teal/10 rounded-[48px] -z-10 translate-x-3 translate-y-3"></div>
+
+              {/* Abstract Shape */}
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-sage/20 rounded-full blur-2xl -z-10"></div>
             </div>
 
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-lg">
-                Dedicated to providing compassionate, comprehensive care for patients of all ages. Dr. Gohokar focuses on preventative medicine and long-term wellness strategies.
-            </p>
+            {/* Certification Badge Overlay */}
+            <div className="absolute -top-10 -right-4 lg:-right-10 bg-white p-5 rounded-3xl shadow-2xl border border-gray-50 flex flex-col items-center gap-1 z-20 hidden sm:flex">
+              <div className="w-14 h-14 bg-teal/5 rounded-full flex items-center justify-center text-teal">
+                <Award className="w-8 h-8" strokeWidth={1.5} />
+              </div>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Certified</span>
+              <span className="text-xs font-bold text-gray-900">ABFM Board</span>
+            </div>
+          </div>
 
-            <Link 
-                to="/aboutdr.nikhil"
-                className="group bg-teal hover:bg-teal-dark text-white rounded-full px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl flex items-center gap-3"
-            >
-                Know more about Dr. Gohokar's extensive work
+          {/* Right Column: Narrative & Details (7/12 width) */}
+          <div className="lg:col-span-7 flex flex-col items-start order-1 lg:order-2">
+
+            {/* Lead Header */}
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal/5 text-teal text-sm font-bold mb-6 tracking-wide border border-teal/10">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Primary Care Physician</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl font-sans font-bold text-gray-900 tracking-tight leading-[1.1] mb-4">
+                Compassionate care by <span className="text-teal">Dr. Nikhil Gohokar</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed max-w-2xl">
+                A Board-Certified Family Physician dedicated to bridging clinical expertise with deep community engagement.
+              </p>
+            </div>
+
+            {/* Quick Highlights Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-10">
+              <div className="flex items-start gap-4 p-5 rounded-3xl bg-cream/30 border border-cream hover:bg-white hover:shadow-lg hover:border-teal/20 transition-all duration-300">
+                <div className="p-3 bg-white rounded-2xl text-teal shadow-sm">
+                  <Languages className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">Multilingual Care</h4>
+                  <p className="text-xs text-gray-500 leading-tight">Fluent in English, Hindi, Marathi, and Urdu.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-5 rounded-3xl bg-cream/30 border border-cream hover:bg-white hover:shadow-lg hover:border-teal/20 transition-all duration-300">
+                <div className="p-3 bg-white rounded-2xl text-teal shadow-sm">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm mb-1">Local Roots</h4>
+                  <p className="text-xs text-gray-500 leading-tight">Serving Fall River & surrounding MA communities.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Detailed Bio Snippet */}
+            <div className="space-y-6 mb-12">
+              <p className="text-lg text-gray-600 leading-relaxed border-l-4 border-teal/20 pl-6 italic">
+                "I believe healthcare is more than just treating symptoms; it's about understanding the individual and their role within the community. My mission is to provide accessible, high-quality care that empowers patients to lead healthier lives."
+              </p>
+              <p className="text-gray-500 leading-relaxed max-w-xl">
+                With a background in Healthcare Administration and years of experience in both primary and urgent care, Dr. Gohokar brings a unique perspective to modern family medicine.
+              </p>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+              <button 
+                onClick={onKnowMore}
+                className="w-full sm:w-auto bg-teal hover:bg-teal-dark text-white rounded-full px-10 py-5 font-bold text-lg transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 group hover:-translate-y-1"
+              >
+                Discover Global Impact
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-        </div>
+              </button>
 
+              <a 
+                href="tel:6172515065"
+                className="text-gray-900 font-bold hover:text-teal transition-colors flex items-center gap-2 group"
+              >
+                <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-teal/30 group-hover:bg-teal/5 transition-all">
+                  <ArrowRight className="w-4 h-4 -rotate-45" />
+                </div>
+                Book a Consultation
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 const faqData = [
   {
     question: "How soon can I make an appointment with Dr. Nikhil Gohokar?",
-    answer: "We often have same-day or next-day appointments available for direct callers. Call us at 617-251-5065 for the fastest service and to check our current availability."
+    answer: "Appointments are usually available for the next week, with occasional earlier openings. Please call 617-251-5065 to check current availability and timings."
   },
   {
     question: "Is Dr. Nikhil Gohokar accepting new patients?",
@@ -12,11 +12,11 @@ const faqData = [
   },
   {
     question: "Does Dr. Nikhil Gohokar accept my insurance?",
-    answer: "We accept most major insurance providers including Blue Cross Blue Shield, UnitedHealthcare, Medicare, and MassHealth. Call us at 617-251-5065 and our staff will verify your insurance coverage before your appointment."
+    answer: "We accept most major insurance providers including Blue Cross Blue Shield, UnitedHealthcare, Medicare, MassHealth. Call us at 617-251-5065 and our staff will verify your insurance coverage before your appointment."
   },
   {
     question: "How do I make an appointment?",
-    answer: "The fastest way to schedule is to call our office directly at 617-251-5065. Our friendly staff can answer your questions, verify your insurance, and find a time that works for you. Same-day availability is often available for callers."
+    answer: "The fastest way to schedule is to call our office directly at 617-251-5065. Our friendly staff can answer your questions, verify your insurance, and find a time that works for you."
   },
   {
     question: "What practice does Dr. Nikhil Gohokar work with?",
