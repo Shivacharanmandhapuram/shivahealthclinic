@@ -333,7 +333,7 @@ const DoctorProfile: React.FC = () => {
                          RECOMMENDED IMAGE SIZE: 1200x600 (2:1 aspect ratio)
                          Format: WebP
                       */
-                  src="USA Initiatives images/group_photo.webp"
+                  src="/group_photo.webp"
                   alt="Community outreach"
                   className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {
